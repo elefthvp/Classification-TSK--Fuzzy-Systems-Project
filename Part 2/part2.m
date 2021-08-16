@@ -1,6 +1,3 @@
-%Eleftheria Papaioannou AEM:8566
-%Fuzzy Systems, exercise 4 part 2
-
 clear all;
 close all;
 warning('off','all')
@@ -12,7 +9,6 @@ k = 5;
 
 %%preprocessing
 %%normalization
-
 M = max(size(data));
 
 for i = 1:M
@@ -55,8 +51,7 @@ optimal = {}; %%3d init
 [ranks, weights] = relieff(trn(:, 1:end-1), trn(:, end), 10);
 
 %%grid search
-
- for f = 1:length(NF)
+for f = 1:length(NF)
      for r = 1:length(NR)
 
         features = ranks(1:NF(f)); 
@@ -85,7 +80,7 @@ optimal = {}; %%3d init
             [fis,error,stepsize,finalfis,chkerror] = anfis(trn_new,inFIS,100,[0 0 0 0],v_new);
             mean_err_mtrx(f, r) = mean_err_mtrx(f,r) + min(chkerror);
         end
-         fprintf('Feature index %d Rule index %d [DONE].\n', NF(f), NR(r)); 
+       fprintf('Feature index %d Rule index %d [DONE].\n', NF(f), NR(r)); 
      end
  end
 
@@ -102,6 +97,7 @@ chk_new = chk(:, features);
 
 opt = NaN(4, 1);
 opt(4) =  0;
+
 %%generate initial model
 inF = genfis3(trn_new(:, 1:end-1),trn_new(:,end),'sugeno',clust,opt);
 
@@ -122,14 +118,14 @@ result = round(result);
 
 
 %%metrics
- errorMatrix = calcErrorMatrix(result, chk(:,end));
- OA = sum(diag(errorMatrix))/length(result);
- x=0;
- y=max(size(errorMatrix));
- [P_A, U_A, x]=findPA_UA_k(errorMatrix,y)
- P_A_f(1,:)=P_A(1,:);
- U_A_f(1,:)= U_A(1,:);
- kest = (length(chk(:,1:end-1))*sum(diag(errorMatrix))-x)/(length(chk(:,1:end-1))^2-x);
+errorMatrix = calcErrorMatrix(result, chk(:,end));
+OA = sum(diag(errorMatrix))/length(result);
+x=0;
+y=max(size(errorMatrix));
+[P_A, U_A, x]=findPA_UA_k(errorMatrix,y)
+P_A_f(1,:)=P_A(1,:);
+U_A_f(1,:)= U_A(1,:);
+kest = (length(chk(:,1:end-1))*sum(diag(errorMatrix))-x)/(length(chk(:,1:end-1))^2-x);
 
 %%plots 
 plot(ERROR)
@@ -138,7 +134,6 @@ plot(CHKERROR, 'LineWidth', 1.5)
 legend('Training', 'Check')
 
 for i=1:5
-
 subplot(2,3,i)
 for j=1:min(size(xout))
     plot(xoutf(:,j),youtf(:,j))
