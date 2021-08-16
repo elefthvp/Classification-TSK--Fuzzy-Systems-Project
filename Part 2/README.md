@@ -1,10 +1,10 @@
 # Main Idea
-<p align=justify> Use a simple dataset for a first approximation on whether the TSK models are able to solve the Classification problem efficiently. The dataset is split in three parts for training, validation and final check of the employed neuro-fuzzy models. <br></p>
+<p align=justify> Use a high-dimensional dataset for a more specific tackle of the Classification problem using neuro-fuzzy TSK models. The dataset is split in three parts for training, validation and final check of the employed neuro-fuzzy models. <br></p>
 <p align=justify> The developed models use a varying number of rules.  The results of each model using the check subset are then evaluated using the criteria mentioned below. <br></p>
 
 
 # Dataset
-The code uses the Avila dataset which consists of 20876 samples and 10 features. It is available in the UCI Repository. 
+The code uses the Isolet dataset which consists of 7797 samples and 618 features. It is available in the UCI Repository. 
 
 # Evaluation Metrics 
 - Error Matrix
