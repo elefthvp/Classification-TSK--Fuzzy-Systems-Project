@@ -1,5 +1,3 @@
-%Eleftheria Papaioannou AEM:8566
-
 clear;
 close all;
 
